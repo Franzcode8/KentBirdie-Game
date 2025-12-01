@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxi7tht2gxv8m"]
+
+[ext_resource type="Texture2D" uid="uid://dd0rgg1yhk7k4" path="res://assets/KENTBIRDIE BG.png" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://bfywrx2l37fnv" path="res://Scenes/bird.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://b5bpr43nl2cfd" path="res://Scenes/game_manager.gd" id="1_kry3j"]
+[ext_resource type="PackedScene" uid="uid://dcskvx2mxkoyt" path="res://Scenes/ground.tscn" id="3_8gbba"]
+[ext_resource type="FontFile" uid="uid://bo1aclgxyg7b6" path="res://assets/FlappyBird.ttf" id="3_344ge"]
+[ext_resource type="PackedScene" uid="uid://c3e2wgn8gsnrr" path="res://Scenes/pipe_spawner.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://d26fmln6f5hl5" path="res://fade.tscn" id="6_21xkr"]
+[ext_resource type="PackedScene" uid="uid://dwftsdk51swi" path="res://ui.tscn" id="7_6bp64"]
+
+[node name="main" type="Node2D"]
+
+[node name="Game Manager" type="Node" parent="."]
+script = ExtResource("1_kry3j")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-3.0000005, 25.000002)
+scale = Vector2(0.2868652, 0.38240564)
+texture = ExtResource("1_bo1nx")
+
+[node name="Label" type="Label" parent="Background"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -964.05615
+offset_top = -710.46924
+offset_right = -32.056152
+offset_bottom = -662.46924
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_344ge")
+theme_override_font_sizes/font_size = 60
+text = "Press Space or Tap left Mouse Button to Flap"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Ground" parent="." instance=ExtResource("3_8gbba")]
+position = Vector2(0, 210)
+
+[node name="PipeSpawner" parent="." instance=ExtResource("4_jjvhh")]
+
+[node name="Bird" parent="." instance=ExtResource("1_jjgbg")]
+
+[node name="Fade" parent="." instance=ExtResource("6_21xkr")]
+
+[node name="UI" parent="." instance=ExtResource("7_6bp64")]

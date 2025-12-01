@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcskvx2mxkoyt"]
+
+[ext_resource type="Script" uid="uid://c1ahh4wt4gxro" path="res://Scenes/ground.gd" id="1_oltiy"]
+[ext_resource type="Texture2D" uid="uid://bb4u8fhepb7dj" path="res://assets/The Minds Behind This Game.png" id="2_oltiy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02qk3"]
+size = Vector2(288.625, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6h8e"]
+size = Vector2(339.25, 27.25)
+
+[node name="Ground" type="Node2D"]
+script = ExtResource("1_oltiy")
+
+[node name="Ground1" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground1"]
+position = Vector2(-5.9604645e-08, 1.9999995)
+scale = Vector2(0.18085937, 0.21052632)
+texture = ExtResource("2_oltiy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground1"]
+position = Vector2(0.6875, -38.5)
+shape = SubResource("RectangleShape2D_02qk3")
+
+[node name="Ground2" type="Area2D" parent="."]
+position = Vector2(262, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground2"]
+position = Vector2(51, 2)
+scale = Vector2(0.211, 0.211)
+texture = ExtResource("2_oltiy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+position = Vector2(51.375, -38.625)
+shape = SubResource("RectangleShape2D_s6h8e")
+
+[connection signal="body_entered" from="Ground1" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Ground2" to="." method="_on_body_entered"]

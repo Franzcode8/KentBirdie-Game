@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bytvirs7nd84o"]
+
+[ext_resource type="AudioStream" uid="uid://b3uq1yrkstle6" path="res://assets/Please_Don_t_Touch_My_Birdie_dU9TFL.mp3" id="1_p1osb"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_p1osb")
+autoplay = true

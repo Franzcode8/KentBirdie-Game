@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://bls4catevkiw2"]
+
+[ext_resource type="Script" uid="uid://d2bb7pf6s3nkr" path="res://Scenes/pipe_pair.gd" id="1_bmsf8"]
+[ext_resource type="Texture2D" uid="uid://dp7oyck1hlpef" path="res://assets/KENT BIRDIE PIPES.png" id="1_nep78"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmsf8"]
+size = Vector2(113.41856, 639.83887)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nep78"]
+size = Vector2(87.94733, 243.96329)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bec1m"]
+size = Vector2(8, 147)
+
+[node name="PipePair" type="Node2D"]
+script = ExtResource("1_bmsf8")
+
+[node name="TopPipe" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="TopPipe"]
+position = Vector2(1.2396833, -206.18901)
+rotation = 3.1415927
+scale = Vector2(0.5350908, 0.5577753)
+texture = ExtResource("1_nep78")
+
+[node name="BottomPipe" type="Area2D" parent="TopPipe/Sprite2D"]
+position = Vector2(-7.1525574e-07, -10.050262)
+
+[node name="Sprite2D" type="Sprite2D" parent="TopPipe/Sprite2D/BottomPipe"]
+position = Vector2(2.316699, -795.0806)
+rotation = -3.1415927
+scale = Vector2(1, 1.2797284)
+texture = ExtResource("1_nep78")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPipe/Sprite2D/BottomPipe"]
+position = Vector2(0.4478588, -796.0665)
+scale = Vector2(0.99999934, 0.9999994)
+shape = SubResource("RectangleShape2D_bmsf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPipe"]
+position = Vector2(-8.013282e-06, -205.50002)
+scale = Vector2(0.69492275, 1.1272188)
+shape = SubResource("RectangleShape2D_nep78")
+
+[node name="Scored" type="Area2D" parent="."]
+position = Vector2(44, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scored"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_bec1m")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="TopPipe" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="TopPipe/Sprite2D/BottomPipe" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Scored" to="." method="_on_point_scored"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

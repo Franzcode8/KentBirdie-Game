@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwftsdk51swi"]
+
+[ext_resource type="Script" uid="uid://d5lb4m6rax0e" path="res://ui.gd" id="1_27fn8"]
+[ext_resource type="Texture2D" uid="uid://1cn6ne40e15w" path="res://assets/GameOverText.png" id="1_fyqef"]
+[ext_resource type="FontFile" uid="uid://bo1aclgxyg7b6" path="res://assets/FlappyBird.ttf" id="2_m6e0p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27fn8"]
+bg_color = Color(0.48437697, 0, 0.084513225, 1)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_27fn8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 32
+
+[node name="PointsLabel" type="Label" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_m6e0p")
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="GameOverBox" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/GameOverBox"]
+layout_mode = 2
+texture = ExtResource("1_fyqef")
+
+[node name="Panel" type="Panel" parent="MarginContainer/GameOverBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_27fn8")
+
+[node name="Button" type="Button" parent="MarginContainer/GameOverBox/Panel"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("2_m6e0p")
+theme_override_font_sizes/font_size = 30
+text = "RESTART"
+
+[connection signal="pressed" from="MarginContainer/GameOverBox/Panel/Button" to="." method="_on_button_pressed"]
