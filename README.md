@@ -1,2 +1,3 @@
 # KentBirdie-Game
-A game development project made by an IT Students at St. Mary's College of Bansalan, Inc.
+This game development project, titled KentBirdie is a modern revival and reimagining of the iconic Flappy Bird, was successfully completed by First year Bachelor of Science in Information Technology students of St. Mary's College of Bansalan, Inc. The project brings back to life the classic endless side-scroller that captured millions of players worldwide, now enhanced with new features, improved graphics, and fresh gameplay mechanics.
+The project was led by Francis Faisal Alonzo, in collaboration with the dedicated team members Jay Bernard Benito, Kent Adrian Ganigan, and Amber Alexcelle Sonza.
